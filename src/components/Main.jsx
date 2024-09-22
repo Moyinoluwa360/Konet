@@ -10,19 +10,19 @@ const Main = (props) => {
             </div>
             <div>
                 <button>
-                    <img src="/src/assets/photo-icon.svg" alt="" />
+                    <img src="/src/assets/picture-icon.png" alt="" />
                     <span>Photo</span>
                 </button>
                 <button>
-                    <img src="/src/assets/video-icon.svg" alt="" />
+                    <img src="/src/assets/video-icon.png" alt="" />
                     <span>Video</span>
                 </button>
                 <button>
-                    <img src="/src/assets/event-icon.svg" alt="" />
+                    <img src="/src/assets/event-icon.png" alt="" />
                     <span>Event</span>
                 </button>
                 <button>
-                    <img src="/src/assets/article-icon.svg" alt="" />
+                    <img src="/src/assets/article-icon.png" alt="" />
                     <span>Write airticle</span>
                 </button>
             </div>
@@ -57,13 +57,17 @@ const ShareBox = styled(CommonCard)`
             outline: none;
             color: rgba(0, 0, 0, 0.6);
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.5;           
             min-height: 48px;
             background-color: transparent;
             border: none;
             display: flex;
             align-items: center;
-            font-weight: 600;           
+            font-weight: 600;
+            img{
+                height: 50px;
+                width: 50px;
+            }
         }
     }
 `
