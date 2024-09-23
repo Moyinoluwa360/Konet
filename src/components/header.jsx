@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { connect } from "react-redux";
 const Header = (props) => {
   return (
     <Container>
@@ -56,9 +56,16 @@ const Header = (props) => {
 
             <User>
               <a>
-                <img src="/src/assets/user.svg" alt="" />
-                <span>Me</span>
-                <img src="/src/assets/down-icon.svg" alt="" />
+                  { props.user  && props.user.photoURL 
+                  ? 
+                  <img src={props.user.photoURL} alt="" /> 
+                  :
+                    <img src="/src/assets/user.svg" alt="" />
+                  }
+                <span>
+                  Me
+                  <img src="/src/assets/down-icon.svg" alt="" />
+                </span>
               </a>
 
               <SignOut>
@@ -261,4 +268,14 @@ const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
-export default Header;
+const mapStateToProps = (state) =>{
+  return {
+    user: state.userState.user
+  };
+};
+
+const mapDispachToProps = (dispatch) =>({
+  
+})
+
+export default connect(mapStateToProps, mapDispachToProps)(Header)
