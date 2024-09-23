@@ -18,7 +18,7 @@ const Main = (props) => {
                     <span>Video</span>
                 </button>
                 <button>
-                    <img src="/src/assets/event-icon.png" alt="" />
+                    <img src="/src/assets/event.png" alt="" />
                     <span>Event</span>
                 </button>
                 <button>
@@ -27,6 +27,23 @@ const Main = (props) => {
                 </button>
             </div>
         </ShareBox>
+        <div>
+            <Article>
+                <SharedActor>
+                    <a>
+                        <img src="/src/assets/user.svg" alt="" />
+                        <div>
+                            <span>Title</span>
+                            <span>Info</span>
+                            <span>Dates</span>
+                        </div>
+                    </a>
+                    <button>
+                        <b>. . .</b>
+                    </button>
+                </SharedActor>
+            </Article>
+        </div>
     </Container>
   )
 };
@@ -65,10 +82,77 @@ const ShareBox = styled(CommonCard)`
             align-items: center;
             font-weight: 600;
             img{
-                height: 50px;
-                width: 50px;
+                height: 25px;
+                width: 25px;
+            }
+        }
+        &:first-child{
+            display: flex;
+            align-items: center;
+            padding: 8px 16px 0 16px;
+            img{
+                width: 48px;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+            button{
+                margin: 4px 0;
+                flex-grow: 1;
+                border-radius: 35px;
+                padding-left: 16px;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                background-color: #eeeeee;
+                text-align: center;
+            }
+        }
+        &:nth-child(2){
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding-bottom: 4px;
+
+            button{
+                img{
+                    margin: 0 4px 0 -2px;
+                }
+                span{
+                    color: #868686;
+                }
             }
         }
     }
 `
+const Article = styled(CommonCard)`
+    padding: 0;
+    margin: 0 0 8px;
+    overflow: visible;
+
+`
+const SharedActor = styled.div`
+    padding-right: 40px;
+    flex-wrap: nowrap;
+    padding: 12px 16px 0;
+    margin-bottom: 8px;
+    align-items: center;
+    display: flex;
+    a{
+        margin-right: 12px;
+        flex-grow: 1;
+        overflow: hidden;
+        display: flex;
+        text-decoration: none;
+
+        img{
+            width: 48px;
+            height: 48px;
+        }
+        & > div{
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+    }
+`
+
+
 export default Main;
