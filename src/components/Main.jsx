@@ -42,6 +42,45 @@ const Main = (props) => {
                         <b>. . .</b>
                     </button>
                 </SharedActor>
+                <Description>Description</Description>
+                <SharedImg>
+                    <a href="">
+                        <img src="/src/assets/sign-in-img.jpg" alt="" />
+                    </a>
+                </SharedImg>
+                <SocialCounts>
+                    <li>
+                        <button>
+                            <img src="/src/assets/thumb-up.svg" alt="" />
+                            <img src="/src/assets/heart.svg" alt="" />
+                            <span>75</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="">
+                            2 comments
+                        </a>
+                    </li>
+                </SocialCounts>
+                <SocialActions>
+                    <button>
+                        <img src="/src/assets/thumb-up.svg" alt="" />
+                        <span>Like</span>
+                    </button>
+                    <button>
+                        <img src="/src/assets/comment.svg" alt="" />
+                        <span>Comment</span>
+                    </button>
+                    <button>
+                        <img src="/src/assets/share.svg" alt="" />
+                        <span>Share</span>
+                    </button>
+                    <button>
+                        <img src="/src/assets/send.svg" alt="" />
+                        <span>Send</span>
+                    </button>
+                </SocialActions>
+                
             </Article>
         </div>
     </Container>
@@ -150,9 +189,92 @@ const SharedActor = styled.div`
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            flex-basis: 0;
+            margin-left: 8px;
+            overflow: hidden;
+            span{
+                text-align: center;
+                &:first-child{
+                    font-size: 14px;
+                    font-weight: 700;
+                    color:rgba(0, 0, 0, 1);
+                }
+
+                &:nth-child(n + 1){
+                    font-size: 12px;
+                    color: rgba(0, 0, 0, 0.6);
+                }
+            }
+        }
+    }
+
+    button{
+        position: absolute;
+        right: 12px;
+        top: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+`
+const Description = styled.div`
+    padding: 0 16px;
+    overflow: hidden;
+    color: rgba(0,0,0,0.9);
+    text-align: left;
+    font-size: 14px;
+`
+const SharedImg = styled.div`
+    margin-top: 8px;
+    width: 100%;
+    display: block;
+    position: relative;
+    background-color: #838383;
+    img{
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+
+    }
+`
+const SocialCounts =styled.ul`
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 16px;
+    padding: 8px 0;
+    border: 1px solid #e9e5df;
+    list-style: none;
+    li{
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    button{
+        display: flex;
+        width: 70px;
+    }
+`
+const SocialActions = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    min-height: 40px;
+    padding: 8px;
+    button{
+        display: inline-flex;
+        padding: 8px;
+        align-content: center;
+        @media (min-width: 760px){
+            span{
+                margin-left: 8px;
+            }
+        }
+        img{
+            height: 15px;
+            width: 15px;
         }
     }
 `
-
-
 export default Main;
