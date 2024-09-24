@@ -7,7 +7,7 @@ const Login = (props) => {
         <Container>
             {
                 props.user &&
-                <Navigate to="/home" replace/>
+                <Navigate to="/home"/>
             }
             <Nav>
                 <a href="/">

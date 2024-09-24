@@ -9,11 +9,10 @@ import { getUserAuth } from './actions'
 import { connect } from 'react-redux'
 
 export function App(props) {
+  console.log(props)
   useEffect(()=>{
-    if (props.getUserAuth) {
-      props.getUserAuth();  // Ensure the function is called safely
-    }
-  }, [])
+      props.getUserAuth;  // Ensure the function is called safely
+  },[props.getUserAuth])
   return (
     <div className="App">
       <Router>
@@ -38,8 +37,8 @@ const mapStateToProps = (state) =>{
   return {};
 };
 
-const mapDispachToProps = (dispatch) =>({
-  getUserAuth: () => dispatch(getUserAuth()),
+const mapDispatchToProps = (dispatch) =>({
+  getUserAuth: () => dispatch(getUserAuth),
 })
 
-export default connect(mapStateToProps, mapDispachToProps)
+export default connect(mapStateToProps, mapDispatchToProps)
