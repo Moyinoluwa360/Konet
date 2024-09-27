@@ -2,36 +2,56 @@ import styled from "styled-components";
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import { connect } from "react-redux";
+import { Timestamp } from "firebase/firestore"; // Updated Firebase import
+import { postArticleAPI } from "../actions";
 
 const PostModal = (props) =>{
-    const [editorText , setEditorText] = useState("");
-    const [shareImage, setShareImage] = useState("")
-    const [videoLink, setVideoLink] = useState("")
-    const [assetArea, setAssetArea] = useState("")
+    const [editorText , setEditorText] = useState(""); 
+    const [shareImage, setShareImage] = useState("");
+    const [videoLink, setVideoLink] = useState("");
+    const [assetArea, setAssetArea] = useState("");
+
     const handleChange = (e)=>{
         const image = e.target.files[0];
-
         if (image === "" || image === undefined){
             alert(`not an image, the file is a ${typeof(image)}`)
-            return
+            return;
         }
-        setShareImage(image)
-
+        setShareImage(image);
     }
 
     const reset = (e)=>{
-        setEditorText("")
-        setShareImage("")
-        setVideoLink("")
-        setAssetArea("")
-        props.handleClick(e)
+        setEditorText("");
+        setShareImage("");
+        setVideoLink("");
+        setAssetArea("");
+        props.handleClick(e);
+    }
+
+    const postArticle = (e) => {
+        e.preventDefault();
+        if (e.target !== e.currentTarget) {
+            return;
+        }
+
+        const payload = {
+            image: shareImage,
+            video: videoLink,
+            user: props.user,
+            description: editorText,
+            timestamp: Timestamp.now(), // Updated Timestamp call
+        };
+
+        props.postArticleAPI(payload); // Fixed typo in method call
+        reset(e);
     }
 
     const switchAssetArea = (area) =>{
-        setShareImage("")
-        setVideoLink("")
-        setAssetArea(area)
+        setShareImage("");
+        setVideoLink("");
+        setAssetArea(area);
     }
+
     return(
             <>
                 {   props.showModal === "open" &&
@@ -103,7 +123,9 @@ const PostModal = (props) =>{
                                         Anyone
                                     </AssetButton>
                                 </ShareComment>  
-                                <PostButton disabled={!editorText? true:false}>Post</PostButton>
+                                <PostButton disabled={!editorText? true:false} 
+                                 onClick={(event)=> postArticle(event)}
+                                >Post</PostButton>
                             </ShareCreation>
                         </Content>
                     </Container>
@@ -111,7 +133,6 @@ const PostModal = (props) =>{
             </>        
     )
 }
-
 const Container = styled.div`
     position: fixed;
     top: 0;
@@ -261,6 +282,10 @@ const mapStateToProps = (state) =>{
         user: state.userState.user,
     }
 }
-const mapDispatchToProps = (dispatch) =>({})
+const mapDispatchToProps = (dispatch) =>({
+    postArticleAPI: (payload) =>{
+        dispatch(postArticleAPI(payload))
+    }
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal)
