@@ -1,5 +1,5 @@
 import { signInWithPopup } from "firebase/auth"; // Import necessary function
-import { auth, provider } from "../firebase"; // Import auth and provider from your Firebase config
+import { auth, provider, storage } from "../firebase"; // Import auth and provider from your Firebase config
 import { SET_USER } from "./actionType";
 
 
@@ -38,5 +38,20 @@ export function signOutApi() {
     }).catch((error)=>{
       console.log(error.message)
     })
+  };
+}
+
+export function postAricleAPI(payload) {
+  return (dispatch) => {
+    if (payload.image != ""){
+      const upload = storage.ref(`images/${payload.image.name}`)
+      .put(payload.image);
+      upload.on("state_changed", (snapshot)=>{
+        const progress = ((
+          snapshot.bytesTransferred / snapshot.totalBytes
+        ) * 100)
+        console.log(`Progress: $(progress)%`)
+      })
+    }
   };
 }
