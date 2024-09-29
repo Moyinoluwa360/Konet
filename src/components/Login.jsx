@@ -11,7 +11,7 @@ const Login = (props) => {
             }
             <Nav>
                 <a href="/">
-                    <img src="./src/assets/konet.jpg" alt="" />
+                    <img src="src/assets/konet.jpg" alt="" />
                     <span className="logo">Konet</span>
                 </a>
                 <div>
@@ -26,13 +26,13 @@ const Login = (props) => {
             <Section>
                 <Hero>
                     <h1>Welcome to the <b>Konet</b> Professional community </h1>
-                    <img src="./src/assets/sign-in-img.jpg" alt="" />
+                    <img src="src/assets/sign-in-img.jpg" alt="" />
                 </Hero>
                 <Form>
                     <Google onClick={()=>{
                         props.signIn()
                     }}>
-                        <img src="./src/assets/google.svg" alt="" />
+                        <img src="src/assets/google.svg" alt="" />
                         Sign in with Google
                     </Google>
                 </Form>

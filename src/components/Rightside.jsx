@@ -6,7 +6,7 @@ const Rightside = (props) => {
       <FollowCard>
         <Title>
           <h2>Add to your feed</h2>
-          <img src="./src/assets/feed-icon.svg" alt="" />
+          <img src="src/assets/feed-icon.svg" alt="" />
         </Title>
 
         <FeedList>
@@ -32,12 +32,12 @@ const Rightside = (props) => {
 
         <Recommendation>
           View all recommendations
-          <img src="./src/assets/right-icon.svg" alt="" />
+          <img src="src/assets/right-icon.svg" alt="" />
         </Recommendation>
       </FollowCard>
       <BannerCard>
         <img
-          src="./src/assets/ad.jpg"
+          src="src/assets/ad.jpg"
         />
       </BannerCard>
     </Container>
@@ -102,7 +102,7 @@ const FeedList = styled.ul`
 `;
 
 const Avatar = styled.div`
-  background-image: url("./src/assets/feed-icon.svg");
+  background-image: url("src/assets/feed-icon.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
