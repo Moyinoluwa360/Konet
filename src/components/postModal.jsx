@@ -62,14 +62,14 @@ const PostModal = (props) =>{
                                     create a post
                                 </h2>
                                 <button onClick={(event)=>reset(event)}>
-                                    <img src="/src/assets/wrong.svg" alt="" />
+                                    <img src="./src/assets/wrong.svg" alt="" />
                                 </button>
                             </Header>
                             <SharedContent>
                                 <UserInfo>
                                     {props.user.photoURL ? <img src={props.user.photoURL} alt="" /> 
                                     :
-                                    <img src="/src/assets/user.svg" alt="" />
+                                    <img src="./src/assets/user.svg" alt="" />
                                     }
                                     <span>{props.user.displayName}</span>
                                 </UserInfo>

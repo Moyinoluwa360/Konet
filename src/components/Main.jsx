@@ -41,7 +41,7 @@ const Main = (props) => {
                     <div>
                     { props.user && props.user.photoURL ?
                     <img src={props.user.photoURL} alt=""/>:
-                    <img src="/src/assets/user.svg" alt="" />
+                    <img src="./src/assets/user.svg" alt="" />
                         }
                         <button onClick={handleClick} 
                         disabled={props.loading? true: false}>Start a post</button>
@@ -56,7 +56,7 @@ const Main = (props) => {
                             <span>Video</span>
                         </button>
                         <button>
-                            <img src="/src/assets/event.png" alt="" />
+                            <img src="./src/assets/event.png" alt="" />
                             <span>Event</span>
                         </button>
                         <button>
@@ -67,7 +67,7 @@ const Main = (props) => {
                 </ShareBox>
                 <Content>
                     {
-                        props.loading && <img src="./src/assets/infinite-spinner.svg" alt="" />
+                        props.loading && <img src="./src/assets/infinite-spinner.svg" alt="" width={"100px"} height={"100px"} />
                     }
                     {props.articles.length > 0 && 
                     props.articles.map((article, key)=>(
@@ -102,8 +102,8 @@ const Main = (props) => {
                         <SocialCounts>
                             <li>
                                 <button>
-                                    <img src="/src/assets/thumb-up.svg" alt="" />
-                                    <img src="/src/assets/heart.svg" alt="" />
+                                    <img src="./src/assets/thumb-up.svg" alt="" />
+                                    <img src="./src/assets/heart.svg" alt="" />
                                     <span>75</span>
                                 </button>
                             </li>
@@ -115,19 +115,19 @@ const Main = (props) => {
                         </SocialCounts>
                         <SocialActions>
                             <button>
-                                <img src="/src/assets/thumb-up.svg" alt="" />
+                                <img src="./src/assets/thumb-up.svg" alt="" />
                                 <span>Like</span>
                             </button>
                             <button>
-                                <img src="/src/assets/comment.svg" alt="" />
+                                <img src="./src/assets/comment.svg" alt="" />
                                 <span>Comment</span>
                             </button>
                             <button>
-                                <img src="/src/assets/share.svg" alt="" />
+                                <img src="./src/assets/share.svg" alt="" />
                                 <span>Share</span>
                             </button>
                             <button>
-                                <img src="/src/assets/send.svg" alt="" />
+                                <img src="./src/assets/send.svg" alt="" />
                                 <span>Send</span>
                             </button>
                         </SocialActions>
