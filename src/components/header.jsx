@@ -9,7 +9,7 @@ const Header = (props) => {
       <Content>
         <Logo>
           <a href="/home">
-            <img src="src/assets/konet.jpg" alt="" />
+            <img src="/assets/konet.jpg" alt="" />
           </a>
         </Logo>
         <Search>
@@ -17,42 +17,42 @@ const Header = (props) => {
             <input type="text" placeholder="Search" />
           </div>
           <SearchIcon>
-            <img src="src/assets/search-icon.svg" alt="" />
+            <img src="/assets/search-icon.svg" alt="" />
           </SearchIcon>
         </Search>
         <Nav>
           <NavListWrap>
             <NavList className="active">
               <a>
-                <img src="src/assets/nav-home.svg" alt="" />
+                <img src="/assets/nav-home.svg" alt="" />
                 <span>Home</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="src/assets/nav-network.svg" alt="" />
+                <img src="/assets/nav-network.svg" alt="" />
                 <span>My Network</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="src/assets/nav-jobs.svg" alt="" />
+                <img src="/assets/nav-jobs.svg" alt="" />
                 <span>Jobs</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="src/assets/nav-messaging.svg" alt="" />
+                <img src="/assets/nav-messaging.svg" alt="" />
                 <span>Messaging</span>
               </a>
             </NavList>
 
             <NavList>
               <a>
-                <img src="src/assets/nav-notifications.svg" alt="" />
+                <img src="/assets/nav-notifications.svg" alt="" />
                 <span>Notifications</span>
               </a>
             </NavList>
@@ -63,11 +63,11 @@ const Header = (props) => {
                   ? 
                   <img src={props.user.photoURL} alt="" /> 
                   :
-                    <img src="src/assets/user.svg" alt="" />
+                    <img src="/assets/user.svg" alt="" />
                   }
                 <span>
                   Me
-                  <img src="src/assets/down-icon.svg" alt="" />
+                  <img src="/assets/down-icon.svg" alt="" />
                 </span>
               </a>
 
@@ -78,10 +78,10 @@ const Header = (props) => {
 
             <Work>
               <a>
-                <img src="src/assets/nav-work.svg" alt="" />
+                <img src="/assets/nav-work.svg" alt="" />
                 <span>
                   Work
-                  <img src="src/assets/down-icon.svg" alt="" />
+                  <img src="/assets/down-icon.svg" alt="" />
                 </span>
               </a>
             </Work>
