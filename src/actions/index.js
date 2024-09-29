@@ -1,9 +1,9 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider, storage, db } from "../firebase"; // Make sure you're importing `db` (Firestore) and `storage` correctly
-import { SET_USER } from "./actionType";
+import { SET_USER, SET_LOADING_STATUS ,GET_ARTICLES } from "./actionType";
 // Import Firebase Storage functions
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, orderBy, query, onSnapshot } from "firebase/firestore";
 
 
 // Action to set the user
@@ -11,6 +11,11 @@ export const setUser = (payload) => ({
   type: SET_USER,
   user: payload,
 });
+
+export const setLoading = (status) => ({
+  type: SET_LOADING_STATUS,
+  status:status,
+})
 
 // Sign-in function using Firebase Auth
 export function signInApi() {
@@ -25,6 +30,10 @@ export function signInApi() {
   };
 }
 
+export const getArticles = (payload) =>({
+  type: GET_ARTICLES,
+  payload: payload,
+})
 // Function to monitor user authentication state
 export function getUserAuth() {
   return (dispatch) => {
@@ -53,8 +62,9 @@ export function signOutApi() {
 // Post article function with image upload and Firestore integration
 export function postArticleAPI(payload) {
   return (dispatch) => {
-    const db = getFirestore(); // Initialize Firestore instance
-
+    dispatch(setLoading(true))
+// Initialize Firestore instance
+    const db = getFirestore(); 
     if (payload.image !== "") {
       const storage = getStorage(); // Initialize Firebase storage
       // Use Firebase Storage's new method to create a reference
@@ -93,6 +103,7 @@ export function postArticleAPI(payload) {
             comments: 0,
             description: payload.description,
           });
+          dispatch(setLoading(false))
         }
       );
     } else {
@@ -109,6 +120,27 @@ export function postArticleAPI(payload) {
         comments: 0,
         description: payload.description,
       });
+      dispatch(setLoading(false))
     }
+  };
+}
+
+export function getArticlesAPI() {
+  return (dispatch) => {
+    // Create a query on the "articles" collection, ordered by actor.date in descending order
+    const articlesQuery = query(
+      collection(db, "articles"),
+      orderBy("actor.date", "desc")
+    );
+
+    // Use onSnapshot to listen to real-time updates
+    onSnapshot(articlesQuery, (snapshot) => {
+      const payload = snapshot.docs.map((doc) => doc.data());
+
+      // Dispatch the articles to the Redux store
+      dispatch(getArticles(payload));
+
+      console.log(payload); // Optional: for debugging purposes
+    });
   };
 }
